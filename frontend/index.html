@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Resume Analyzer</title>
+
+    <link
+        rel="stylesheet"
+        href="static/style.css"
+    >
+</head>
+
+
+<body>
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+
+    <header class="hero">
+
+        <div class="hero-background hero-background-one"></div>
+        <div class="hero-background hero-background-two"></div>
+
+        <div class="container hero-content">
+
+            <div class="brand-badge">
+                <span class="brand-dot"></span>
+                AI-Powered Career Assistant
+            </div>
+
+            <h1>
+                AI Resume
+                <span>Analyzer</span>
+            </h1>
+
+            <p class="hero-description">
+                Analyze your resume against any job description,
+                discover skill gaps, improve your resume,
+                and increase your chances of getting noticed.
+            </p>
+
+            <div class="hero-features">
+
+                <div class="hero-feature">
+                    <span class="feature-icon">✓</span>
+                    Smart Skill Matching
+                </div>
+
+                <div class="hero-feature">
+                    <span class="feature-icon">✓</span>
+                    Resume Quality Score
+                </div>
+
+                <div class="hero-feature">
+                    <span class="feature-icon">✓</span>
+                    Actionable Recommendations
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="container main-content">
+
+
+        <!-- =========================
+             ANALYZER CARD
+        ========================== -->
+
+        <section class="analyzer-card">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <div class="section-label">
+                        RESUME ANALYSIS
+                    </div>
+
+                    <h2>
+                        Analyze Your Resume
+                    </h2>
+
+                    <p>
+                        Upload your resume and paste the job description
+                        to get a detailed compatibility analysis.
+                    </p>
+
+                </div>
+
+                <div class="analysis-badge">
+                    <span></span>
+                    Ready to analyze
+                </div>
+
+            </div>
+
+
+            <!-- INPUT GRID -->
+
+            <div class="input-grid">
+
+
+                <!-- Resume Upload -->
+
+                <div class="input-card">
+
+                    <div class="input-card-header">
+
+                        <div class="input-icon resume-icon">
+                            CV
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Upload Resume
+                            </h3>
+
+                            <p>
+                                PDF or DOCX format
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label
+                        for="resumeFile"
+                        class="upload-area"
+                    >
+
+                        <div class="upload-icon">
+                            ↑
+                        </div>
+
+                        <strong>
+                            Choose your resume
+                        </strong>
+
+                        <span>
+                            Click to browse your files
+                        </span>
+
+                        <small>
+                            Supported formats: PDF and DOCX
+                        </small>
+
+                        <input
+                            type="file"
+                            id="resumeFile"
+                            accept=".pdf,.docx"
+                        >
+
+                    </label>
+
+                    <div
+                        id="selectedFileName"
+                        class="selected-file"
+                    ></div>
+
+                </div>
+
+
+                <!-- Job Description -->
+
+                <div class="input-card">
+
+                    <div class="input-card-header">
+
+                        <div class="input-icon job-icon">
+                            JD
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Job Description
+                            </h3>
+
+                            <p>
+                                Paste the position requirements
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <textarea
+                        id="jobDescription"
+                        class="job-description-input"
+                        placeholder="Paste the job description here...
+
+Example:
+
+Required Skills:
+Python, FastAPI, PostgreSQL
+
+Preferred Skills:
+Docker, AWS
+
+Nice to have:
+Git, Teamwork"
+                    ></textarea>
+
+                    <div class="textarea-footer">
+
+                        <span>
+                            Include the complete job description
+                        </span>
+
+                        <span>
+                            Required / Preferred skills supported
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACTION AREA -->
+
+            <div class="analyzer-actions">
+
+                <div
+                    id="statusMessage"
+                    class="status-message"
+                ></div>
+
+
+                <div class="action-buttons">
+
+                    <button
+                        id="uploadButton"
+                        class="secondary-button"
+                        type="button"
+                    >
+                        <span>Upload Resume</span>
+                    </button>
+
+                    <button
+                        id="analyzeButton"
+                        class="primary-button"
+                        type="button"
+                    >
+                        <span>Analyze Resume</span>
+                        <span class="button-arrow">→</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ANALYSIS RESULTS
+        ========================== -->
+
+        <section
+            id="analysisSection"
+            class="results-section"
+        >
+
+
+            <!-- RESULTS HEADER -->
+
+            <div class="results-header">
+
+                <div>
+
+                    <div class="section-label">
+                        ANALYSIS RESULTS
+                    </div>
+
+                    <h2>
+                        Your Resume Insights
+                    </h2>
+
+                    <p>
+                        Here's how your resume compares with the job description.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SCORE CARDS -->
+
+            <div class="score-grid">
+
+
+                <div class="score-card overall-score">
+
+                    <div class="score-card-top">
+
+                        <span class="score-title">
+                            Overall Match
+                        </span>
+
+                        <span class="score-symbol">
+                            %
+                        </span>
+
+                    </div>
+
+                    <div
+                        id="matchScore"
+                        class="score-value"
+                    >
+                        0%
+                    </div>
+
+                    <div class="score-description">
+                        Resume compatibility
+                    </div>
+
+                </div>
+
+
+                <div class="score-card">
+
+                    <div class="score-card-top">
+
+                        <span class="score-title">
+                            Technical Score
+                        </span>
+
+                        <span class="score-symbol">
+                            T
+                        </span>
+
+                    </div>
+
+                    <div
+                        id="technicalScore"
+                        class="score-value"
+                    >
+                        0%
+                    </div>
+
+                    <div class="score-description">
+                        Technical skill match
+                    </div>
+
+                </div>
+
+
+                <div class="score-card">
+
+                    <div class="score-card-top">
+
+                        <span class="score-title">
+                            Soft Skills
+                        </span>
+
+                        <span class="score-symbol">
+                            S
+                        </span>
+
+                    </div>
+
+                    <div
+                        id="softSkillScore"
+                        class="score-value"
+                    >
+                        0%
+                    </div>
+
+                    <div class="score-description">
+                        Communication & people skills
+                    </div>
+
+                </div>
+
+
+                <div class="score-card">
+
+                    <div class="score-card-top">
+
+                        <span class="score-title">
+                            Resume Quality
+                        </span>
+
+                        <span class="score-symbol">
+                            Q
+                        </span>
+
+                    </div>
+
+                    <div
+                        id="qualityScore"
+                        class="score-value"
+                    >
+                        0%
+                    </div>
+
+                    <div class="score-description">
+                        Resume structure & quality
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 JOB SKILL PRIORITIES
+            ========================== -->
+
+            <div class="content-card">
+
+                <div class="content-card-header">
+
+                    <div>
+
+                        <div class="section-label">
+                            JOB REQUIREMENTS
+                        </div>
+
+                        <h2>
+                            Job Skill Priorities
+                        </h2>
+
+                        <p>
+                            Understand which skills matter most for this position.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="priority-grid">
+
+
+                    <div class="priority-card required-priority">
+
+                        <div class="priority-card-header">
+
+                            <div class="priority-icon">
+                                !
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Required
+                                </h3>
+
+                                <span>
+                                    High priority
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            id="requiredSkills"
+                            class="skills-container"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="priority-card preferred-priority">
+
+                        <div class="priority-card-header">
+
+                            <div class="priority-icon">
+                                +
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Preferred
+                                </h3>
+
+                                <span>
+                                    Medium priority
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            id="preferredSkills"
+                            class="skills-container"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="priority-card general-priority">
+
+                        <div class="priority-card-header">
+
+                            <div class="priority-icon">
+                                •
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    General
+                                </h3>
+
+                                <span>
+                                    Additional skills
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            id="generalSkills"
+                            class="skills-container"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 MISSING SKILLS
+            ========================== -->
+
+            <div class="content-card">
+
+                <div class="content-card-header">
+
+                    <div>
+
+                        <div class="section-label">
+                            SKILL GAP ANALYSIS
+                        </div>
+
+                        <h2>
+                            Missing Skills
+                        </h2>
+
+                        <p>
+                            Skills detected in the job description but not found
+                            in your resume.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="missing-priority-grid">
+
+
+                    <div class="missing-card high-missing">
+
+                        <div class="missing-card-header">
+
+                            <div class="missing-icon">
+                                !
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    High Priority
+                                </h3>
+
+                                <span>
+                                    Focus on these first
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            id="highPriorityMissingSkills"
+                            class="skills-container"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="missing-card medium-missing">
+
+                        <div class="missing-card-header">
+
+                            <div class="missing-icon">
+                                +
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Medium Priority
+                                </h3>
+
+                                <span>
+                                    Good skills to develop
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            id="mediumPriorityMissingSkills"
+                            class="skills-container"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="missing-card low-missing">
+
+                        <div class="missing-card-header">
+
+                            <div class="missing-icon">
+                                •
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Low Priority
+                                </h3>
+
+                                <span>
+                                    Optional improvements
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            id="lowPriorityMissingSkills"
+                            class="skills-container"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 MATCHING / MISSING
+            ========================== -->
+
+            <div class="two-column-grid">
+
+
+                <div class="content-card">
+
+                    <div class="content-card-header compact">
+
+                        <div>
+
+                            <div class="section-label">
+                                MATCHING
+                            </div>
+
+                            <h2>
+                                Matching Skills
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="matchingSkills"
+                        class="skills-container"
+                    ></div>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <div class="content-card-header compact">
+
+                        <div>
+
+                            <div class="section-label">
+                                MISSING
+                            </div>
+
+                            <h2>
+                                All Missing Skills
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="missingSkills"
+                        class="skills-container"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 SUGGESTIONS
+            ========================== -->
+
+            <div class="content-card recommendation-card">
+
+                <div class="content-card-header">
+
+                    <div>
+
+                        <div class="section-label">
+                            IMPROVEMENT PLAN
+                        </div>
+
+                        <h2>
+                            Resume Improvement Suggestions
+                        </h2>
+
+                        <p>
+                            Practical changes that can make your resume stronger.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div
+                    id="suggestions"
+                    class="suggestions-container"
+                ></div>
+
+            </div>
+
+
+            <!-- =========================
+                 AI RECOMMENDATIONS
+            ========================== -->
+
+            <div class="content-card ai-card">
+
+                <div class="ai-card-header">
+
+                    <div class="ai-orb">
+                        AI
+                    </div>
+
+                    <div>
+
+                        <div class="section-label">
+                            SMART INSIGHTS
+                        </div>
+
+                        <h2>
+                            AI Recommendations
+                        </h2>
+
+                        <p>
+                            Personalized recommendations based on your analysis.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div
+                    id="aiRecommendations"
+                    class="recommendations-container"
+                ></div>
+
+            </div>
+
+
+            <!-- =========================
+                 RESUME QUALITY
+            ========================== -->
+
+            <div class="two-column-grid">
+
+
+                <div class="content-card quality-card">
+
+                    <div class="content-card-header compact">
+
+                        <div>
+
+                            <div class="section-label">
+                                STRENGTHS
+                            </div>
+
+                            <h2>
+                                Resume Strengths
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="qualityStrengths"
+                        class="quality-list"
+                    ></div>
+
+                </div>
+
+
+                <div class="content-card quality-card">
+
+                    <div class="content-card-header compact">
+
+                        <div>
+
+                            <div class="section-label">
+                                WARNINGS
+                            </div>
+
+                            <h2>
+                                Areas to Improve
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="qualityWarnings"
+                        class="quality-list"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 RESUME STATISTICS
+            ========================== -->
+
+            <div class="content-card">
+
+                <div class="content-card-header compact">
+
+                    <div>
+
+                        <div class="section-label">
+                            RESUME METRICS
+                        </div>
+
+                        <h2>
+                            Resume Statistics
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stats-grid">
+
+
+                    <div class="stat-card">
+
+                        <span class="stat-icon">
+                            W
+                        </span>
+
+                        <div>
+
+                            <strong id="wordCount">
+                                0
+                            </strong>
+
+                            <span>
+                                Words
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span class="stat-icon">
+                            A
+                        </span>
+
+                        <div>
+
+                            <strong id="actionVerbCount">
+                                0
+                            </strong>
+
+                            <span>
+                                Action Verbs
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span class="stat-icon">
+                            #
+                        </span>
+
+                        <div>
+
+                            <strong id="quantifiableAchievementCount">
+                                0
+                            </strong>
+
+                            <span>
+                                Quantifiable Achievements
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 REPORT
+            ========================== -->
+
+            <div
+                id="reportSection"
+                class="report-card"
+            >
+
+                <div>
+
+                    <div class="section-label">
+                        ANALYSIS REPORT
+                    </div>
+
+                    <h2>
+                        Your Analysis Is Ready
+                    </h2>
+
+                    <p>
+                        Save your results and keep them for your job search.
+                    </p>
+
+                    <div class="report-meta">
+
+                        <span>
+                            Resume:
+                            <strong id="resumeFilename">
+                                -
+                            </strong>
+                        </span>
+
+                        <span>
+                            Analysis ID:
+                            <strong id="analysisId">
+                                -
+                            </strong>
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="downloadReport"
+                    class="download-button"
+                    type="button"
+                >
+                    Download Report
+                    <span>↓</span>
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 HISTORY
+            ========================== -->
+
+            <div class="content-card history-card">
+
+                <div class="content-card-header">
+
+                    <div>
+
+                        <div class="section-label">
+                            HISTORY
+                        </div>
+
+                        <h2>
+                            Previous Analyses
+                        </h2>
+
+                        <p>
+                            Review your previous resume analyses.
+                        </p>
+
+                    </div>
+
+                    <button
+                        id="clearHistory"
+                        class="danger-button"
+                        type="button"
+                    >
+                        Clear History
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="historyList"
+                    class="history-list"
+                ></div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="container footer-content">
+
+            <div>
+
+                <strong>
+                    AI Resume Analyzer
+                </strong>
+
+                <span>
+                    Intelligent resume analysis for smarter job applications.
+                </span>
+
+            </div>
+
+            <span>
+                Built with Python, FastAPI & JavaScript
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <script src="static/script.js?v=12"></script>
+
+</body>
+
+</html>
